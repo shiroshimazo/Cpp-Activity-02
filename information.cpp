@@ -14,7 +14,9 @@ int main() {
 }
 
 void viewRecords() {
-
+    ifstream infoFile("personal_info.txt");
+    string information;
+    
 }
 
 void createInfo() {
@@ -24,7 +26,38 @@ void createInfo() {
     string emailAdd;
     long long int phoneNum;
     string section;
+    ofstream infoFile("personal_info.txt");
+    
+    cout << "\n\tEnter Full Name: ";
+    cin.ignore();
+    getline(cin, fullName);
 
+    cout << "\n\tEnter Birth Date (MM/DD/YYYY): ";
+    getline(cin, birthDay);
+
+    cout << "\n\tEnter City Address: ";
+    getline(cin, cityAdd);
+
+    cout << "\n\tEnter Email Address: ";
+    getline(cin, emailAdd);
+
+    cout << "\n\tEnter Phone Number: ";
+    cin >> phoneNum;
+    cin.ignore();
+
+    cout << "\n\tEnter Section: ";
+    getline(cin, section);
+
+    infoFile << "Full Name: " << fullName << endl;
+    infoFile << "Birth Date: " << birthDay << endl;
+    infoFile << "City Address: " << cityAdd << endl;
+    infoFile << "Email Address: " << emailAdd << endl;
+    infoFile << "Phone Number: " << phoneNum << endl;
+    infoFile << "Section: " << section << endl;
+    infoFile.close();
+    clrscrn();
+    cout << "\n\tInformation Saved Successfully!" << endl;
+    mainMenu();
 }
 
 void mainMenu() {
