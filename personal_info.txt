@@ -1,0 +1,10 @@
+
+	--- Personal Information ---
+Full Name:   Jeremy Malana
+Birth Date:  08/06/2006
+Section:     BSIT-12005
+
+	--- Personal Information ---
+Full Name:   Adam Hisona
+Birth Date:  01/19/2007
+Section:     BSIT-1205

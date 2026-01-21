@@ -16,7 +16,16 @@ int main() {
 void viewRecords() {
     ifstream infoFile("personal_info.txt");
     string information;
-    
+
+    if(!infoFile) {
+        cout << "\n\tNo Records Found!" << endl;
+    } else {
+        while(getline(infoFile, information)) {
+            cout << information << endl;
+        }
+        infoFile.close();
+    }
+    mainMenu();
 }
 
 void createInfo() {
@@ -26,7 +35,8 @@ void createInfo() {
     string emailAdd;
     long long int phoneNum;
     string section;
-    ofstream infoFile("personal_info.txt");
+    fstream infoFile;
+    infoFile.open("personal_info.txt", ios::app);
     
     cout << "\n\tEnter Full Name: ";
     cin.ignore();
@@ -35,25 +45,13 @@ void createInfo() {
     cout << "\n\tEnter Birth Date (MM/DD/YYYY): ";
     getline(cin, birthDay);
 
-    cout << "\n\tEnter City Address: ";
-    getline(cin, cityAdd);
-
-    cout << "\n\tEnter Email Address: ";
-    getline(cin, emailAdd);
-
-    cout << "\n\tEnter Phone Number: ";
-    cin >> phoneNum;
-    cin.ignore();
-
     cout << "\n\tEnter Section: ";
-    getline(cin, section);
+    cin >> section;
 
-    infoFile << "Full Name: " << fullName << endl;
-    infoFile << "Birth Date: " << birthDay << endl;
-    infoFile << "City Address: " << cityAdd << endl;
-    infoFile << "Email Address: " << emailAdd << endl;
-    infoFile << "Phone Number: " << phoneNum << endl;
-    infoFile << "Section: " << section << endl;
+    infoFile << "\n\t--- Personal Information ---" << endl;
+    infoFile << "\tFull Name:   " << fullName << endl;
+    infoFile << "\tBirth Date:  " << birthDay << endl;
+    infoFile << "\tSection:     " << section << endl;
     infoFile.close();
     clrscrn();
     cout << "\n\tInformation Saved Successfully!" << endl;
